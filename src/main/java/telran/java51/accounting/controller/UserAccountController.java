@@ -34,7 +34,7 @@ public class UserAccountController {
 	}
 
 	@PostMapping("/login")
-	public UserDto login(Principal principal) {
+	public UserDto login(Principal principal) {   //Authentication = principal + extentions
 		return userAccountService.getUser(principal.getName());
 	}
 
