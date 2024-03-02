@@ -1,11 +1,8 @@
 package telran.java51.security;
 
-import java.util.ArrayList;
-
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import telran.java51.accounting.model.Role;
 import telran.java51.post.dao.PostRepository;
 import telran.java51.post.model.Post;
 
@@ -20,10 +17,4 @@ public class CustomWebSecurity {
 		Post post = postRepository.findById(postId).orElse(null);
 		return post !=null && userName.equals(post.getAuthor());
 	}
-	
-	public boolean isModerator(ArrayList<String> roles) {		
-	
-		return roles.contains(Role.MODERATOR.name());
-	}
-
 }
