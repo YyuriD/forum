@@ -10,7 +10,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.expression.WebExpressionAuthorizationManager;
 
-import jakarta.websocket.Session;
 import lombok.RequiredArgsConstructor;
 import telran.java51.accounting.model.Role;
 
@@ -36,8 +35,6 @@ public class AuthorizationConfiguration {
 				.access(new WebExpressionAuthorizationManager("#author == authentication.name"))
 				.requestMatchers(HttpMethod.PUT, "/forum/post/{id}/comment/{author}")
 				.access(new WebExpressionAuthorizationManager("#author == authentication.name"))
-//				.requestMatchers(HttpMethod.PUT, "/forum/post/{id}")
-//				.access(new WebExpressionAuthorizationManager("@customSecurity.checkPostAuthor(#id, authentication.name)"))
 				.requestMatchers(HttpMethod.PUT, "/forum/post/*").access((authentication, context) -> {
 					String[] arr = context.getRequest().getServletPath().split("/");
 					String postId = arr[arr.length - 1];
