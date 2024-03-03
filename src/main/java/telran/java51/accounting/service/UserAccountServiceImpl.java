@@ -1,6 +1,5 @@
 package telran.java51.accounting.service;
 
-import org.mindrot.jbcrypt.BCrypt;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -86,7 +85,7 @@ public class UserAccountServiceImpl implements UserAccountService, CommandLineRu
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(String... args) throws Exception {      //creating admin admin
 		if (!userAccountRepository.existsById("admin")) {
 			String password = passwordEncoder.encode("admin");
 			UserAccount userAccount = new UserAccount("admin", password, "", "");
